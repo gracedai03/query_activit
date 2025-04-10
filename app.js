@@ -64,18 +64,55 @@ let t1 = {
 // });
 
 //all teams in spain
-function queryTeamsInSpain() {
-  db.collection("teams")
-    .where("country", "==", "Spain")
-    .get()
-    .then((data) => {
-      let mydocs = data.docs;
-      if (mydocs.length == 0) {
-        console.log("No teams in Spain");
-        return;
-      }
-      mydocs.forEach((d) => {
-        console.log(d.data());
-      });
+db.collection("teams")
+  .where("country", "==", "Spain")
+  .get()
+  .then((data) => {
+    let mydocs = data.docs;
+    // mydocs.forEach((d) => {
+    //   console.log(d.data());
+    // });
+  });
+
+//in spain, madrid
+db.collection("teams")
+  .where("country", "==", "Spain")
+  .where("city", "==", "Madrid")
+  .get()
+  .then((data) => {
+    let mydocs = data.docs;
+    // mydocs.forEach((d) => {
+    //   console.log(d.data());
+    // });
+  });
+
+//national teams
+db.collection("teams")
+  .where("city", "==", "Not applicable")
+  .get()
+  .then((data) => {
+    let mydocs = data.docs;
+    // mydocs.forEach((d) => {
+    //   console.log(d.data());
+    // });
+  });
+//not in spain
+db.collection("teams")
+  .where("country", "not-in", ["Spain"])
+  .get()
+  .then((data) => {
+    let mydocs = data.docs;
+    // mydocs.forEach((d) => {
+    //   console.log(d.data());
+    // });
+  });
+//not in spain/england
+db.collection("teams")
+  .where("country", "not-in", ["Spain", "England"])
+  .get()
+  .then((data) => {
+    let mydocs = data.docs;
+    mydocs.forEach((d) => {
+      console.log(d.data());
     });
-}
+  });
