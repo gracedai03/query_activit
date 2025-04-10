@@ -59,6 +59,23 @@ let t1 = {
 };
 
 // Add each team to the Firestore collection
-teams.forEach((team) => {
-  db.collection("teams").add(team);
-});
+// teams.forEach((team) => {
+//   db.collection("teams").add(team);
+// });
+
+//all teams in spain
+function queryTeamsInSpain() {
+  db.collection("teams")
+    .where("country", "==", "Spain")
+    .get()
+    .then((data) => {
+      let mydocs = data.docs;
+      if (mydocs.length == 0) {
+        console.log("No teams in Spain");
+        return;
+      }
+      mydocs.forEach((d) => {
+        console.log(d.data());
+      });
+    });
+}
