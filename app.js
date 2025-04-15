@@ -240,3 +240,78 @@ db.collection("teams")
     });
     output.innerHTML = html;
   });
+
+//ronalda
+db.collection("teams")
+  .where("topScorers", "array-contains", "Ronaldo")
+  .get()
+  .then((data) => {
+    let docs = data.docs;
+    let output = document.getElementById("results8");
+
+    if (docs.length === 0) {
+      output.innerHTML = "<p>No results.</p>";
+      return;
+    }
+
+    let html = "";
+    docs.forEach((doc) => {
+      let team = doc.data();
+      html += `
+      <div>
+        ${team.teamName}: Top scorers are ${team.topScorers.join(", ")}<br>
+      </div>
+    `;
+    });
+    output.innerHTML = html;
+  });
+
+//ronalda
+db.collection("teams")
+  .where("topScorers", "array-contains", "Ronaldo")
+  .get()
+  .then((data) => {
+    let docs = data.docs;
+    let output = document.getElementById("results8");
+
+    if (docs.length === 0) {
+      output.innerHTML = "<p>No results.</p>";
+      return;
+    }
+
+    let html = "";
+    docs.forEach((doc) => {
+      let team = doc.data();
+      html += `
+    <div>
+      ${team.teamName}: Top scorers are ${team.topScorers.join(", ")}<br>
+    </div>
+  `;
+    });
+    output.innerHTML = html;
+  });
+
+//ronalda, messi, maradona
+db.collection("teams")
+  .where("topScorers", "array-contains-any", ["Ronaldo", "Maradona", "Messi"])
+  .get()
+  .then((data) => {
+    let docs = data.docs;
+    let output = document.getElementById("results9");
+
+    if (docs.length === 0) {
+      output.innerHTML = "<p>No results.</p>";
+      return;
+    }
+
+    let html = "";
+    docs.forEach((doc) => {
+      let team = doc.data();
+      html += `
+      <div>
+        ${team.teamName}: Top scorers are ${team.topScorers.join(", ")}<br>
+      </div>
+    `;
+    });
+    output.innerHTML = html;
+  });
