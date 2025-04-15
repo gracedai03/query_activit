@@ -390,26 +390,36 @@ let jerseyColors = {
   },
 };
 
-// RealM
-db.collection("teams")
-  .where("teamName", "==", "Real Madrid FC")
-  .get()
-  .then((docs) => {
-    docs.forEach((doc) => {
-      db.collection("teams").doc(doc.id).update({
-        color: jerseyColors["Real Madrid FC"],
-      });
-    });
-  });
+// // RealM
+// db.collection("teams")
+//   .where("teamName", "==", "Real Madrid FC")
+//   .get()
+//   .then((docs) => {
+//     docs.forEach((doc) => {
+//       db.collection("teams").doc(doc.id).update({
+//         color: jerseyColors["Real Madrid FC"],
+//       });
+//     });
+//   });
 
-// barca
-db.collection("teams")
-  .where("teamName", "==", "FC Barcelona")
-  .get()
-  .then((docs) => {
-    docs.forEach((doc) => {
-      db.collection("teams").doc(doc.id).update({
-        color: jerseyColors["FC Barcelona"],
-      });
-    });
-  });
+// // barca
+// db.collection("teams")
+//   .where("teamName", "==", "FC Barcelona")
+//   .get()
+//   .then((docs) => {
+//     docs.forEach((doc) => {
+//       db.collection("teams").doc(doc.id).update({
+//         color: jerseyColors["FC Barcelona"],
+//       });
+//     });
+//   });
+
+// Madrid update
+db.collection("teams").doc("xaoC0hZMiWbw7AU9CY1u").update({
+  "color.away": "purple",
+});
+
+// barca update
+db.collection("teams").doc("I82tOqc3yp6zzASMtq7a").update({
+  "color.away": "pink",
+});
