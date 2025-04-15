@@ -315,3 +315,65 @@ db.collection("teams")
     });
     output.innerHTML = html;
   });
+
+// Update Real Madrid
+db.collection("teams")
+  .where("teamName", "==", "Real Madrid")
+  .get()
+  .then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      db.collection("teams").doc(doc.id).update({
+        teamName: "Real Madrid FC",
+        worldwideFansMillions: 811,
+      });
+    });
+  });
+
+//update barcelona
+db.collection("teams")
+  .where("teamName", "==", "Barcelona")
+  .get()
+  .then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      db.collection("teams").doc(doc.id).update({
+        teamName: "FC Barcelona",
+        worldwideFansMillions: 747,
+      });
+    });
+  });
+
+// Real Madrid
+db.collection("teams")
+  .where("teamName", "==", "Real Madrid FC")
+  .get()
+  .then((docs) => {
+    docs.forEach((doc) => {
+      const data = doc.data();
+      let scorers = data.topScorers;
+      scorers = scorers.filter((name) => name !== "Hazard");
+      if (!scorers.includes("Crispo")) {
+        scorers.push("Crispo");
+      }
+      db.collection("teams").doc(doc.id).update({
+        topScorers: scorers,
+      });
+    });
+  });
+
+//barcelona
+db.collection("teams")
+  .where("teamName", "==", "FC Barcelona")
+  .get()
+  .then((docs) => {
+    docs.forEach((doc) => {
+      const data = doc.data();
+      let scorers = data.topScorers;
+      scorers = scorers.filter((name) => name !== "Puyol");
+      if (!scorers.includes("Deco")) {
+        scorers.push("Deco");
+      }
+      db.collection("teams").doc(doc.id).update({
+        topScorers: scorers,
+      });
+    });
+  });
