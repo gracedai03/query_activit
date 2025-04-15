@@ -377,3 +377,39 @@ db.collection("teams")
       });
     });
   });
+
+//jersey colors
+let jerseyColors = {
+  "Real Madrid FC": {
+    home: "White",
+    away: "Black",
+  },
+  "FC Barcelona": {
+    home: "Red",
+    away: "Gold",
+  },
+};
+
+// RealM
+db.collection("teams")
+  .where("teamName", "==", "Real Madrid FC")
+  .get()
+  .then((docs) => {
+    docs.forEach((doc) => {
+      db.collection("teams").doc(doc.id).update({
+        color: jerseyColors["Real Madrid FC"],
+      });
+    });
+  });
+
+// barca
+db.collection("teams")
+  .where("teamName", "==", "FC Barcelona")
+  .get()
+  .then((docs) => {
+    docs.forEach((doc) => {
+      db.collection("teams").doc(doc.id).update({
+        color: jerseyColors["FC Barcelona"],
+      });
+    });
+  });
