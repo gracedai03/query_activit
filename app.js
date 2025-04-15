@@ -317,30 +317,14 @@ db.collection("teams")
   });
 
 // Update Real Madrid
-db.collection("teams")
-  .where("teamName", "==", "Real Madrid")
-  .get()
-  .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      db.collection("teams").doc(doc.id).update({
-        teamName: "Real Madrid FC",
-        worldwideFansMillions: 811,
-      });
-    });
-  });
+db.collection("teams").doc("xaoC0hZMiWbw7AU9CY1u").update({
+  name: "Real Madrid FC",
+});
 
 //update barcelona
-db.collection("teams")
-  .where("teamName", "==", "Barcelona")
-  .get()
-  .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      db.collection("teams").doc(doc.id).update({
-        teamName: "FC Barcelona",
-        worldwideFansMillions: 747,
-      });
-    });
-  });
+db.collection("teams").doc("I82tOqc3yp6zzASMtq7a").update({
+  name: "FC Barcelona",
+});
 
 // Real Madrid
 db.collection("teams")
