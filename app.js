@@ -111,8 +111,31 @@ db.collection("teams")
   .where("country", "not-in", ["Spain", "England"])
   .get()
   .then((data) => {
+    // let mydocs = data.docs;
+    // mydocs.forEach((d) => {
+    //   console.log(d.data());
+    // });
+  });
+
+//>700m fans
+db.collection("teams")
+  .where("worldwideFansMillions", ">", 700)
+  .get()
+  .then((data) => {
     let mydocs = data.docs;
     mydocs.forEach((d) => {
       console.log(d.data());
     });
+  });
+
+//500-600 fans
+db.collection("teams")
+  .where("worldwideFansMillions", ">=", 500)
+  .where("worldwideFansMillions", "<=", 600)
+  .get()
+  .then((data) => {
+    // let mydocs = data.docs;
+    // mydocs.forEach((d) => {
+    //   console.log(d.data());
+    // });
   });
